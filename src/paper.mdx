@@ -1,40 +1,31 @@
 ---
-title: Academic Project Page Template
+title: "Static Is Not Enough: A Comparative Study of VR and SpaceMouse in Static and Dynamic Teleoperation Tasks"
 authors:
-  - name: Roman Hauksson
-    url: https://roman.technology
-    institution: University of Texas at Dallas
-    notes: ["*", †]
-  - name: Author Two
-    institution: Institution Two
-    notes: ["*", †]
-  - name: Author Three
-    institution: Institution Three
-    notes: ["*"]
-  - name: Author Four
-    institution: Institution Four
-conference: Conference Name
-notes:
-  - symbol: "*"
-    text: author note one
-  - symbol: †
-    text: author note two
+  - name: Yijun Zhou
+    url: https://zoexor.github.io
+
+
+  - name: Muhan Hou
+    url: https://mh-hou.github.io
+
+
+  - name: Kim Baraka
+    url: https://www.kimbaraka.com/
+
+
+conference: Vrije Universiteit Amsterdam
+
 links:
-  - name: Paper
-    url: https://github.com/RomanHauksson/academic-project-astro-template
-    icon: ri:file-pdf-2-line
-  - name: Code
-    url: https://github.com/RomanHauksson/academic-project-astro-template
-    icon: ri:github-line
   - name: arXiv
-    url: https://github.com/RomanHauksson/academic-project-astro-template
+    url: https://arxiv.org/abs/2601.13042
     icon: academicons:arxiv
-  - name: Slides
-    url: https://github.com/RomanHauksson/academic-project-astro-template
-    icon: ri:slideshow-2-line
+  - name: Code
+    url: https://github.com/ZoExOr/VR2Arm-Proj
+    icon: ri:github-line
+
 
 # The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
-theme: device
+theme: light
 
 # This is the icon that appears in the user's browser tab. To customize, change the favicon.svg file in /public/, or add your own file to /public/ and change the filename here.
 favicon: favicon.svg
@@ -58,151 +49,181 @@ import Wide from "./components/Wide.astro";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
 import { Comparison } from "./components/Comparison.tsx";
 
-import outside from "./assets/outside.mp4";
-import dogsDiffc from "./assets/dogs-diffc.png"
-import dogsTrue from "./assets/dogs-true.png"
-import dogsMsillm from "@/assets/dogs-msillm.jpg"
+import demo from "./assets/demo.mp4";
+import vr1 from "./assets/vr-t1.mov";
+import vr2 from "./assets/vr-t2.mov";
+import vr3 from "./assets/vr-t3.mov";
+import vr4 from "./assets/vr-t4.mov";
 
-<Video src={outside} />
+import spm1 from "./assets/spm-t1.MOV";
+import spm2 from "./assets/spm-t2.MOV";
+import spm3 from "./assets/spm-t3.mov";
+import spm4 from "./assets/spm-t4.mov";
+
+
+import overview from "./assets/overview.png"
+import success from "./assets/success+duration.png"
+import sus from "./assets/sus+nasa.png"
+import tasks from "./assets/tasks.png"
+import vr from "./assets/vr_workflow.png"
+
+<Video src={demo} />
 
 <HighlightedSection>
 
+
+
+<div style="text-align: center;">
+
 ## Abstract
 
-This is a template you can use to create a professional project page for your research paper. [See the code for the template and instructions on how to use it yourself on GitHub](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
+</div>
+
+Imitation learning relies on high-quality demonstrations, and teleoperation is a primary way to collect them, making teleoperation interface choice crucial for the data. Prior work mainly focused on **static tasks**, i.e., discrete, segmented motions, yet demonstrations also include **dynamic tasks** requiring reactive control. As dynamic tasks impose fundamentally different interface demands, insights from static-task evaluations cannot generalize. 
+
+To address this gap, we conduct **a within-subjects study comparing a VR controller and a SpaceMouse across two static and two dynamic tasks (N=25)**. We assess success rate, task duration, cumulative success, alongside NASA-TLX, SUS, and open-ended feedback. **Results show statistically significant advantages for VR**: higher success rates, particularly on dynamic tasks, shorter successful execution times across tasks, and earlier successes across attempts, with significantly lower workload and higher usability. 
+
+**As existing VR teleoperation systems are rarely open-source or suited for dynamic tasks, we release [our VR controller interface](https://github.com/ZoExOr/VR2Arm-Proj) to fill this gap.**
 
 </HighlightedSection>
 
-## Visuals
+<div style="text-align: center;">
 
-### Picture
+## Framework
 
-Use the `Picture` component to display images. If you have a figure in PDF format, you can pass in its path as the `src` prop and it will be converted into a web-friendly image automatically.
-
-<Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-
-### Wide visual
-
-I constrained the maximum width of the text column to make sure it's readable even when the screen is wide. But images and other visuals should "break out" and take up more horizontal space: for this, try wrapping them in the `Wide` component.
-
-<Wide>
-  <Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-</Wide>
-
-### Figure with caption
-
-Wrap a visual in a `Figure` component to add a caption.
+</div>
 
 <Figure>
-  <Picture slot="figure" src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  <Fragment slot="caption">A photo of two dogs running side-by-side in shallow water, lossily compressed using the [DiffC algorithm](https://jeremyiv.github.io/diffc-project-page/).</Fragment>
+  <Picture slot="figure" src={overview} alt=""/>
+  <Fragment slot="caption">**Overview of the study design**, including the two teleoperation interfaces (our VR controller, SpaceMouse), four randomized tasks (two static and two dynamic), and evaluated measures of user task performance and user experience.</Fragment>
 </Figure>
 
-### Comparison slider
 
-Use the `Comparison` component to compare two visuals with an interactive slider.
+<div style="text-align: center;">
 
-<Comparison client:idle >
-  <Picture slot="itemOne" src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  <Picture slot="itemTwo" src={dogsTrue} alt="True photo of two dogs running side-by-side in shallow water" />
-</Comparison>
+## Our VR Controller Interface Interview
+</div>
 
-### Tab panels
+<Figure>
+  <Picture slot="figure" src={vr} alt=""/>
+  <Fragment slot="caption"> **Workflow of our VR teleoperation interface.** Controller pose is tracked and mapped to incremental end-effector commands, with button inputs handling gripper control and calibration.</Fragment>
+</Figure>
 
-Tab panels are a great way to display a labeled collection of related visuals without taking up too much space.
 
-<Tabs defaultValue="true">
-  <TabsList>
-    <TabsTrigger value="true">Ground truth</TabsTrigger>
-    <TabsTrigger value="diffc">DiffC (Flux-dev)</TabsTrigger>
-    <TabsTrigger value="msillm">MS-ILLM</TabsTrigger>
-  </TabsList>
-  <TabsContent value="true">
-    <Picture
-      src={dogsTrue}
-      alt="True photo of two dogs running side-by-side in shallow water"
-    />
-  </TabsContent>
-  <TabsContent value="diffc">
-    <Picture
-      src={dogsDiffc}
-      alt="Photo of two running dogs, lossily compressed using the DiffC algorithm"
-    />
-  </TabsContent>
-  <TabsContent value="msillm">
-    <Picture
-      src={dogsMsillm}
-      alt="Photo of two running dogs, lossily compressed using MS-ILLM"
-    />
-  </TabsContent>
-</Tabs>
+<div style="text-align: center;">
+## Task Design
+</div>
 
-### Carousel
+<Figure>
+  <Picture slot="figure" src={tasks} alt=""/>
+  <Fragment slot="caption"> **Tasks used in our study**, including success criteria. T1 and T2 are static tasks. T3 and T4 are dynamic tasks requiring continuous motion.</Fragment>
+</Figure>
 
-A carousel is another useful pattern for a collection of visuals that don't necessarily have meaningful labels.
 
-<Carousel>
-  <CarouselSlide>
-    <Picture src={dogsTrue} alt="True photo of two dogs running side-by-side in shallow water" />
-  </CarouselSlide>
-  <CarouselSlide>
-    <Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  </CarouselSlide>
-  <CarouselSlide>
-    <Picture
-      src={dogsMsillm}
-      alt="Photo of two running dogs, lossily compressed using MS-ILLM"
-    />
-  </CarouselSlide>
-</Carousel>
+<div style="text-align: center;">
 
-## Two columns
+## So What's the Results...?
 
-Use the two columns component to display two columns of content. In this example, the first column contains a YouTube video embed and the second column contains an interactive 3D model viewer. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
+</div>
+
+<div style="text-align: center;">
+
+### Results For Static Tasks
+
+</div>
+<p style="text-align: center; color: gray;">**Top row**: Our VR Controller | **Bottom row**: SpaceMouse</p>
 
 <TwoColumns>
-  <YouTubeVideo slot="left" videoId="wjZofJX0v4M" />
-  <ModelViewer slot="right" src="/BoxVertexColors.glb" alt="A cube colored with a rainbow gradient" />
+  <div slot="left">
+    <Video src={vr1} />
+    <p style="text-align: center; color: black;">**Stack-3-Cups**</p>
+  </div>
+
+  <div slot="right">
+    <Video src={vr2} />
+    <p style="text-align: center; color: black;">**Spetula-Insert-Holder**</p>
+  </div>
 </TwoColumns>
 
-## $\LaTeX$
+<TwoColumns>
+  <Video slot="left" src={spm1} />
+  <Video slot="right" src={spm2} />
+</TwoColumns>
 
-You can also add $\LaTeX$ formulas, rendered during the build process using [$\KaTeX$](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: $a^2 + b^2 = c^2$. Or, you can write them as a block:
+<div style="text-align: center;">
 
-$$
-\int_a^b f(x) dx
-$$
+🐌 SpaceMouse succeed in both static tasks, but **much slower** than our VR Controller…
 
-## Citation
+</div>
 
-If you copy your bibliography into `./bibliography.bib`, you can cite papers using their BibTeX keys, and they'll be automatically formatted and included in the bibliography section at the end. For example: [@vaswani2017attention]. Note that these citations are distinct from footnotes[^mynote], which show up in a separate section if you use them.
 
-[^mynote]: On the web, they should really be called "endnotes", since each page constitutes a full document.
 
-## Table
+<div style="text-align: center;">
 
-Add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
+### Results For Dynamic Tasks
 
-| Model | Accuracy | F1 score | Training time (hours) |
-| :--- | :---: | :---: | :---: |
-| BERT-base | 0.89 | 0.87 | 4.5 |
-| RoBERTa-large | 0.92 | 0.91 | 7.2 |
-| DistilBERT | 0.86 | 0.84 | 2.1 |
-| XLNet | 0.90 | 0.89 | 6.8 |
+</div>
+<p style="text-align: center; color: gray;">**Top row**: Our VR Controller | **Bottom row**: SpaceMouse</p>
+<TwoColumns>
+  <div slot="left">
+    <Video src={vr3} />
+    <p style="text-align: center; color: black;">**Pan-Object-Flipping**</p>
+  </div>
 
-## BibTeX citation
+  <div slot="right">
+    <Video src={vr4} />
+    <p style="text-align: center; color: black;">**Paper-Drawn-Under-Bottle**</p>
+  </div>
+</TwoColumns>
+<TwoColumns>
+  <Video slot="left" src={spm3} />
+  <Video slot="right" src={spm4} />
+</TwoColumns>
 
-Displaying the BibTeX entry for your paper in a code block makes it easy to copy and paste.
+<div style="text-align: center;">
+❌ SpaceMouse **failed both dynamic tasks**…
 
+</div>
+
+
+
+<div style="text-align: center;">
+## Participant Feedback & Comparison
+</div>
+
+<div style="text-align: center;">
+### User Experience
+</div>
+
+
+<Figure>
+  <Picture slot="figure" src={success} alt=""/>
+  <Fragment slot="caption">
+    **User performance analysis across four tasks.** 
+    Our VR controller interface consistently achieves **higher success rates**, yields **significantly shorter completion times**, and **reaches successful completion earlier** across static and dynamic tasks.
+  </Fragment>
+</Figure>
+
+<div style="text-align: center;">
+### User Task Performance
+</div>
+
+<Figure>
+  <Picture slot="figure" src={sus} alt=""/>
+  <Fragment slot="caption">**User subjective feedback.** Our VR controller interface shows **higher usability** and **significantly lower workload** across both static and dynamic tasks.</Fragment>
+</Figure>
+
+## BibTeX 
 ```bibtex
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
+@article{zhou2026static,
+  title={Static Is Not Enough: A Comparative Study of VR and SpaceMouse in Static and Dynamic Teleoperation Tasks},
+  author={Zhou, Yijun and Hou, Muhan and Baraka, Kim},
+  journal={arXiv preprint arXiv:2601.13042},
+  year={2026}
 }
 ```
+## Acknowledgement
 
-## Bibliography
+This project utilizes a customized version of [oculus_reader](https://github.com/rail-berkeley/oculus_reader), which has been specifically optimized and enhanced to meet our technical requirements. All modifications are strictly compliant with the Apache-2.0 License.
 
-[^ref]
+We would also sincerely thank all the participants in our user study for their essential contributions to this project.
